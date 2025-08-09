@@ -46,6 +46,7 @@ body {
     color: #010101;
 }
 .custom-logo {
+    max-width: 55px;
     max-height: 55px;
     margin: 0 16px;
 }
