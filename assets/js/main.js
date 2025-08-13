@@ -16,4 +16,14 @@ $(document).ready(function() {
         $('.menu__mobile .menu').toggle(500);
         $(this).toggleClass('close');
     });
+
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        loop: true,
+        slidesPerGroup: 3,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
 });

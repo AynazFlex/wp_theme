@@ -156,8 +156,7 @@ body {
     margin: 0;
 }
 .team__inner {
-    display: flex;
-    justify-content: space-around;
+    width: 100%;
     padding-top: 127px;
 }
 .team__item {

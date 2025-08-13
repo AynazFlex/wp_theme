@@ -21,37 +21,47 @@
     <div class="team" id="team">
         <div class="container">
             <div class="block__head">
-                <h2 class="block__title">This is our team</h2>
-                <p class="block__text">We are small but effective and ...</p>
+                <h2 class="block__title"><?= CFS()->get('team_title') ?></h2>
+                <p class="block__text"><?= CFS()->get('team_description') ?></p>
             </div>
-            <div class="team__inner">
-                <div class="team__item">
-                    <img class="team__item-img" src="img/team1.png" alt="">
-                    <h3 class="team__item-title">Mark Once</h3>
-                    <p class="team__item-text">Designer & Front-End Developer</p>
-                    <div class="team__icon-box">
-                        <a href="#"><i class="icon-twitter"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                    </div>
+            <div class="swiper mySwiper team__inner">
+                <div class="swiper-wrapper">
+                <?php
+                    $loop = CFS()->get('team_card');
+
+                    foreach ($loop as $row) {
+                        $name = $row['team_name']
+                        ?>
+                            <div class="swiper-slide">
+                                <div class="team__item">
+                                    <img class="team__item-img" src="<?= $row['team_ava'] ?>" alt="ava <?= $name?>">
+                                    <h3 class="team__item-title"><?= $name?></h3>
+                                    <p class="team__item-text"><?= $row['team_post'] ?></p>
+                                    <div class="team__icon-box">
+                                        <?php
+                                            $twitter_url = $row['team_twitter']['url'];
+                                            $inst_url = $row['team_instagram']['url'];
+
+                                            if(!empty($twitter_url)) {
+                                                ?>
+                                                    <a href="<?= $twitter_url ?>" target="<?= $row['team_twitter']['target'] ?>"><i class="icon-twitter"></i></a>
+                                                <?php
+                                            }
+                                            if(!empty($inst_url)) {
+                                                ?>
+                                                    <a href="<?= $inst_url ?>" target="<?= $row['team_instagram']['target'] ?>"><i class="icon-instagram"></i></a>
+                                                <?php
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
                 </div>
-                <div class="team__item">
-                    <img class="team__item-img" src="img/team2.png" alt="">
-                    <h3 class="team__item-title">Justin Twice</h3>
-                    <p class="team__item-text">Founder & CEO</p>
-                    <div class="team__icon-box">
-                        <a href="#"><i class="icon-twitter"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="team__item">
-                    <img class="team__item-img" src="img/team3.png" alt="">
-                    <h3 class="team__item-title">Antonio Never</h3>
-                    <p class="team__item-text">Someone & Somewhere</p>
-                    <div class="team__icon-box">
-                        <a href="#"><i class="icon-twitter"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                    </div>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </div>
